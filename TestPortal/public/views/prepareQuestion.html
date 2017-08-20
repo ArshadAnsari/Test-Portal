@@ -1,0 +1,113 @@
+<style>
+    .row.content {
+        background-color: #f1f1f1;
+    }
+    
+    .mainDiv {
+        background-color: #FFF;
+        min-height: 800px;
+        padding-bottom: 60px;
+    }
+    
+    .form-control {
+        width: 80%;
+    }
+    
+    .myList-item-input {
+        display: inline
+    }
+    
+    .myList-item {
+        border: none;
+        padding: 5px 15px;
+    }
+    
+    .bullets {
+        padding-right: 15px
+    }
+    
+    .addQstnButton {
+        right: 0px;
+        margin-bottom: 20px;
+    }
+    
+    .optionRadio {
+        margin-left: 15px;
+        cursor: pointer
+    }
+    
+    .optionRadioLabel {
+        margin-bottom: 0px;
+        cursor: pointer
+    }
+    
+    .removeAnchor {
+        right: 15px;
+        position: absolute;
+    }
+    
+    .titleLabel {
+        width: 100%;
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    .titleInput {
+        font-size: 20px;
+        margin: auto;
+    }
+    
+    .marksInput {
+        width: 10%
+    }
+    
+    @media screen and (max-width: 767px) {
+        .sidenav {
+            height: auto;
+            padding: 15px;
+        }
+    }
+</style>
+<div class="container-fluid text-center" style="background-color: #f1f1f1;">
+    <div class="row content">
+        <div class="col-sm-2 sidenav"></div>
+        <div class="col-sm-8 text-left mainDiv" ng-app="newPaperApp" ng-controller="newPaperController">
+            <h1>Welcome</h1>
+            <p>Make your question paper here. You are required to enter question and for each question enter possible options.</p>
+            <hr>
+            <form ng-submit="submitPaper()">
+                <label class="titleLabel">Enter Test Title</label>
+                <input type="text" class="titleInput form-control" placeholder="Enter Test title" value="" ng-model="questions.title" required/></br>
+                <label>Time (mins) : 
+                    <input type="number" class="form-control" min="1" style="display: inline; width:35%;" placeholder="Time" value="{{questions.time}}" ng-model="questions.time" required/>
+                </label>
+                <hr>
+                <div class="form-group" ng-repeat="x in questions.questions">
+                    </br>
+                    <label>Question {{x.questionNumber}}</label><a class="removeAnchor" href ng-click="removeQuestion(x.questionNumber)">remove</a>
+                    <textarea class="form-control" rows="3" ng-model="x.text" placeholder="Enter question" required>{{x.text}}</textarea></br>
+                    <label>Options</label></br>
+                    <ul class="list-group myList">
+                        <li class="list-group-item myList-item" ng-repeat="i in x.Options">
+                            <label class="bullets">{{i.number}}</label>
+                            <input type="text" class="form-control myList-item-input" placeholder="Option {{i.number}}" value="{{i.text}}" ng-model="i.text" required/>
+                            <div class="radio-inline optionRadio">
+                                <label class="optionRadioLabel">
+									<input type="radio" value={{i.number}} name="question_radio_{{x.questionNumber}}" ng-model="x.correctAnswer" required>
+									Correct
+								</label>
+                            </div>
+                        </li>
+                    </ul>
+                    <label>Marks</label></br>
+                    <input type="number" class="form-control marksInput" placeholder="Enter Marks" min="0" value="x.marks" ng-model="x.marks" required/>
+                    <hr>
+                </div>
+                <button type="button" class="btn btn-success addQstnButton pull-right" ng-click="addQuestion()">Add question</button>
+                <button type="submit" class="btn btn-success">Submit question paper</button>
+            </form>
+        </div>
+
+        <div class="col-sm-2 sidenav"></div>
+    </div>
+</div>

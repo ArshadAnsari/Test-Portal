@@ -1,0 +1,73 @@
+<style>
+    .row.content {
+        background-color: #f1f1f1;
+    }
+    
+    .mainDiv {
+        min-height: 800px;
+        padding-bottom: 60px;
+    }
+    
+    .myButton {
+        width: 45%;
+        height: 199px;
+        font-size: 49px;
+    }
+    
+    .makeItalic {
+        font-style: italic;
+        font-size: 17px;
+    }
+    
+    .idInput {
+        width: 70%;
+        float: left
+    }
+    
+    .startButton {
+        margin-left: 5%;
+        margin-top: 2px;
+        width: 100px;
+        float: left;
+    }
+    
+    .note {
+        color: red;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 17px;
+    }
+    
+    .message {
+        margin-top: 6%;
+        position: relative;
+        width: 70%;
+        text-align: center;
+        font-size: 20px;
+    }
+</style>
+
+<div class="container-fluid text-center" style="background-color: #f1f1f1;">
+    <div class="row content">
+        <div class="col-sm-2 sidenav"></div>
+
+        <div class="col-sm-8 text-left mainDiv">
+            <h1>Welcome</h1>
+            <p class="makeItalic">Please enter test id and click on start button to start the test. For each question you will be given 4 options, you have to select 1 correct answer otherwise marks for the perticular question would be deducted.</p>
+            <p class="note">Note : Do not refresh or close the browser during test, you will not be able to reappear once the test is started.</p>
+            <hr>
+            <form role="form" class="form-horizontal">
+                <input type="text" class="form-control idInput" placeholder="Enter Test ID" ng-model="testID" required/>
+                <button type="button" class="btn btn-primary btn-sm startButton" ng-click="onStartTest()">Start Test</button>
+            </form>
+
+            <label class="message" ng-bind="message"> </label>
+        </div>
+
+        <div class="col-sm-2 sidenav"></div>
+    </div>
+</div>
+
+<footer class="container-fluid text-center">
+    <p>Footer Text</p>
+</footer>

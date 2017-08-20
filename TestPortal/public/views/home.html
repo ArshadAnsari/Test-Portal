@@ -1,0 +1,37 @@
+<style>
+    .row.content {
+        background-color: #f1f1f1;
+    }
+    
+    .mainDiv {
+        min-height: 800px;
+        padding-bottom: 60px;
+    }
+    
+    .myButton {
+        width: 45%;
+        height: 199px;
+        font-size: 49px;
+    }
+</style>
+
+<div class="container-fluid text-center" style="background-color: #f1f1f1;">
+    <div class="row content">
+        <div class="col-sm-2 sidenav"></div>
+
+        <div class="col-sm-8 text-left mainDiv">
+            <h1>Welcome</h1>
+            <p>Select one of the option to continue.</p>
+            <hr>
+
+            <button type="button" class="btn btn-success myButton" ng-click="onNewPaper()">New paper</button>
+            <button type="button" class="btn btn-success myButton pull-right" ng-click="onReviewPaper()">Review</button>
+        </div>
+
+        <div class="col-sm-2 sidenav"></div>
+    </div>
+</div>
+
+<footer class="container-fluid text-center">
+    <p>Footer Text</p>
+</footer>
